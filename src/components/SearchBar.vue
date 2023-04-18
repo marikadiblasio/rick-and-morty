@@ -44,7 +44,8 @@ import {store} from '../data/store';
 
           resetSearch(){
             store.search.status = '';
-            // store.search.name = '';
+            store.search.name = '';
+            store.error.show = false;
             this.$emit('searchChange')
           }
         }
