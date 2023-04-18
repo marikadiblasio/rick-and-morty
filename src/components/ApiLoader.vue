@@ -1,0 +1,27 @@
+<template>
+    <div>
+        <i class="fa-solid fa-sync fa-spin"></i>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'ApiLoader'
+    }
+</script>
+
+<style lang="scss" scoped>
+    div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0,0,0, 0.5);
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4rem;
+    }
+</style>
