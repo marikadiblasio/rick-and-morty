@@ -4,7 +4,7 @@
     <main>
       <SearchBar @searchChange="getCharacters"/>
       <CharactersList />
-      <div v-if="store.error.show">{{ store.error.message }}</div>
+      <div class="alert alert-danger" v-if="store.error.show">{{ store.error.message }}</div>
     </main>
   </div>
 </template>
@@ -28,24 +28,10 @@ import CharactersList from './components/CharactersList.vue';
       }
     },
     methods: {
-      // getCharacters(){
-      //   store.error.show= false;
-      //   store.error.meggage='';
-      //   store.CharacterList = [];
-      //   let url = store.baseUrl + store.endpoint;
-        // if(this.characterStatus) {
-          // const params = `?status=${this.characterStatus}`;
-          // url += params;
-          // const options = {
-          //   params: {
-          //     status: this.characterStatus
-           // }
-          // }
           getCharacters() {
               store.loading=true;
               store.error.show = false;
               store.error.message = '';
-              // store.characterList = [];
               const url = store.baseUrl + store.endpoint;
               let options = {}
               let params = {}
@@ -68,32 +54,16 @@ import CharactersList from './components/CharactersList.vue';
                 //store.loading=false;
                 store.CharacterList.length = 0; //modo + efficiente di svuotare array
                 store.error.show = true;
-                store.error.message = error;
+                store.error.message = error.request.responseText;
               }).finally(()=> {
               store.loading=false;
             });
             }
 },
-        // axios.get(url).then((res)=> {
-        //   console.log(res.data.results);
-        //   store.CharacterList = res.data.results;
-        // })
-      //   axios.get(url, option).then((res)=> {
-      //     console.log(res.data.results);
-      //     store.CharacterList = res.data.results;
-      //   }).catch((error) =>{
-      //   console.log(error) //axios ritorna oggetto inconsole.
-      //   store.error.show = true;
-      //   store.error.message = error.response.store //---> da reinizializzare a inizio chiamata
-      // }) 
     mounted(){
-      //se ho endpoint = ''; in mounted
-      //store.endpoint = 'character';
       this.getCharacters();
     }
   }
 </script>
-
 <style lang="scss" scoped>
-
 </style>
